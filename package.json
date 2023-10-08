@@ -1,0 +1,24 @@
+{
+  "name": "shieldbearer",
+  "version": "1.0.1",
+  "description": "NPM  package meticulously crafted to simplify JSON Web Token (JWT) operations in JavaScript projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exagonsoft/ShieldBearer.git"
+  },
+  "keywords": [
+    "WEB",
+    "Token",
+    "Free"
+  ],
+  "author": "Alvaro R Martin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/exagonsoft/ShieldBearer/issues"
+  },
+  "homepage": "https://github.com/exagonsoft/ShieldBearer#readme"
+}
