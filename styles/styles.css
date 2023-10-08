@@ -1,0 +1,13 @@
+.logo {
+    border-radius: 50%;
+    box-shadow: 2px 2px 8px rgba(36, 34, 34, 0.808);
+}
+
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
