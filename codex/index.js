@@ -25,25 +25,25 @@ class ComplexTokenHandler {
     let decryptedText = "";
 
     for (let i = 0; i < encryptedText.length; i++) {
-        const encryptedChar = encryptedText.charCodeAt(i);
-        const keyChar = this.secretKey.charCodeAt(i % this.secretKey.length);
-        const decryptedChar = (encryptedChar - keyChar + 256) % 256; // Modulo 256 ensures the result stays positive
-        decryptedText += String.fromCharCode(decryptedChar);
+      const encryptedChar = encryptedText.charCodeAt(i);
+      const keyChar = this.secretKey.charCodeAt(i % this.secretKey.length);
+      const decryptedChar = (encryptedChar - keyChar + 256) % 256; // Modulo 256 ensures the result stays positive
+      decryptedText += String.fromCharCode(decryptedChar);
     }
 
     return decryptedText;
   }
 
   decodeToken(token) {
-    const { _header, _body, _signature } = token.split(".");
-    const _decodedObject = this.decodeBody(_body);
+    const _segments = token.split(".");
+    const _decodedObject = this.decodeBody(_segments[1]);
 
     return _decodedObject;
   }
 
   validateToken(token) {
-    const { _header, _body, _signature } = token.split(".");
-    const _isValid = this.validateBody(_body);
+    const _segments = token.split(".");
+    const _isValid = this.validateBody(_segments[1]);
 
     return _isValid;
   }

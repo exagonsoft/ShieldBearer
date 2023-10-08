@@ -12,15 +12,15 @@ class SimpleTokenHandler {
   }
 
   decodeToken(token) {
-    const { _header, _body, _signature } = token.split(".");
-    const _decodedObject = this.decodeBody(_body);
+    const _segments = token.split(".");
+    const _decodedObject = this.decodeBody(_segments[1]);
 
     return _decodedObject;
   }
 
   validateToken(token) {
-    const { _header, _body, _signature } = token.split(".");
-    const _isValid = this.validateBody(_body);
+    const _segments = token.split(".");
+    const _isValid = this.validateBody(_segments[1]);
 
     return _isValid;
   }
