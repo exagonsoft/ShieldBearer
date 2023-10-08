@@ -6,26 +6,31 @@ class ComplexTokenHandler {
   // Basic XOR-based encryption with matrix multiplication and random values
   encrypt(text) {
     let encryptedText = "";
-    
+
     for (let i = 0; i < text.length; i++) {
       const textChar = text.charCodeAt(i);
       const keyChar = this.secretKey.charCodeAt(i % this.secretKey.length);
-      const encryptedChar = (textChar + keyChar) % 256; // Assuming ASCII characters (0-255)
+      const encryptedChar = (textChar + keyChar) % 256; // Modulo 256 ensures the result stays within ASCII range (0-255)
       encryptedText += String.fromCharCode(encryptedChar);
     }
 
-    return encryptedText;
+    // Base64 encode the encrypted text
+    return btoa(encryptedText);
   }
 
   // Basic XOR-based decryption with matrix multiplication and random values
-  decrypt(encryptedText) {
+  decrypt(encryptedBase64Text) {
+    // Base64 decode the input
+    const encryptedText = atob(encryptedBase64Text);
     let decryptedText = "";
+
     for (let i = 0; i < encryptedText.length; i++) {
-      const encryptedChar = encryptedText.charCodeAt(i);
-      const keyChar = this.secretKey.charCodeAt(i % this.secretKey.length);
-      const decryptedChar = (encryptedChar - keyChar + 256) % 256; // Assuming ASCII characters (0-255)
-      decryptedText += String.fromCharCode(decryptedChar);
+        const encryptedChar = encryptedText.charCodeAt(i);
+        const keyChar = this.secretKey.charCodeAt(i % this.secretKey.length);
+        const decryptedChar = (encryptedChar - keyChar + 256) % 256; // Modulo 256 ensures the result stays positive
+        decryptedText += String.fromCharCode(decryptedChar);
     }
+
     return decryptedText;
   }
 
