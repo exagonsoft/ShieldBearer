@@ -12,10 +12,27 @@ class SimpleTokenHandler {
   }
 
   decodeToken(token) {
+    if (!this.isValidSBT(token)) {
+      throw new Error("Invalid ShieldBearer Token");
+    }
+
     const _segments = token.split(".");
     const _decodedObject = this.decodeBody(_segments[1]);
 
     return _decodedObject;
+  }
+
+  isValidSBT(token) {
+    let _result = false;
+
+    if (token) {
+      const _sections = token.split(".");
+      if (_sections.length == 3) {
+        _result = true;
+      }
+    }
+
+    return _result;
   }
 
   validateToken(token) {
@@ -36,8 +53,8 @@ class SimpleTokenHandler {
   generateBody(object) {
     // Calculate timestamps for rtt (now + 12h) and tto (now + 24h)
     const now = new Date();
-    const rtt = new Date(now.getTime() + 12 * 60 * 60 * 1000);
-    const tto = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const rtt = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+    const tto = new Date(now.getTime() + 12 * 60 * 60 * 1000);
 
     const _newObj = {
       ...object,
