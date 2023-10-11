@@ -36,8 +36,25 @@ class SimpleTokenHandler {
   }
 
   validateToken(token) {
+
+    if(!this.isValidSBT(token)){
+      throw new Error("Invalid ShieldBearer Token");
+    }
+
     const _segments = token.split(".");
     const _isValid = this.validateBody(_segments[1]);
+
+    return _isValid;
+  }
+
+  validateRefreshToken(token) {
+
+    if(!this.isValidSBT(token)){
+      throw new Error("Invalid ShieldBearer Token");
+    }
+    
+    const _segments = token.split(".");
+    const _isValid = this.validateRefreshBody(_segments[1]);
 
     return _isValid;
   }
@@ -92,6 +109,23 @@ class SimpleTokenHandler {
       const _stringBody = atob(stringBody);
       const _objectBody = JSON.parse(_stringBody);
       const _tokenTimeOut = _objectBody.tto;
+      const currentTimestamp = Date.now();
+
+      if (_tokenTimeOut > currentTimestamp) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  validateRefreshBody(stringBody) {
+    try {
+      const _stringBody = atob(stringBody);
+      const _objectBody = JSON.parse(_stringBody);
+      const _tokenTimeOut = _objectBody.rtt;
       const currentTimestamp = Date.now();
 
       if (_tokenTimeOut > currentTimestamp) {
