@@ -74,6 +74,29 @@ console.log(isValid); // Output: true
 
 <br />
 
+## Improved Security
+
+-  You are also able to improve token security by using a secret key to perform operations.
+
+```text
+- The secret key works like an ssh encryption, you most have the same secret in both points to ensure success.
+```
+
+```javascript
+const shieldbearer = require("shieldbearer");
+
+// Sign a JWT
+const token = shieldbearer.sign({ userId: 123 }, "secretKey");
+
+// Decode the JWT
+const decodedData = shieldbearer.decode(token, "secretKey");
+console.log(decodedData); // Output: { userId: 123 }
+
+// Validate the JWT
+const isValid = shieldbearer.validate(token, "secretKey");
+console.log(isValid); // Output: true
+```
+
 ## Contributing
 
 -  Contributions are welcome! For bug reports or feature requests, please submit an issue or make a pull request. For more information, check out our contribution guidelines.
