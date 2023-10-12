@@ -29,6 +29,9 @@ jobs:
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
+    - name: Set execute permission for the script
+      run: chmod +x ./upload_coverage.sh
+
     - name: Upload coverage reports to Codacy
       env:
         CODACY_PROJECT_TOKEN: ${{secrets.CODACY_PROJECT_TOKEN}}
