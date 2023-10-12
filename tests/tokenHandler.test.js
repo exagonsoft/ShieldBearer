@@ -13,6 +13,21 @@ describe('Token Handling Functions', () => {
     const decodedObject = Decode(signedToken, secretKey);
     expect(decodedObject).to.be.an('Object')
     expect(decodedObject).to.contain.keys(['userId', 'username'])
+    expect(decodedObject.userId).to.be.equal(123)
+    expect(decodedObject.username).to.be.equal('testuser')
+  });
+
+  it('should sign and decode a token correctly without secret key', () => {
+    const objectValue = { userId: 123, username: 'testuser' };
+
+    const signedToken = Sign(objectValue);
+    expect(signedToken).to.be.an('String')
+
+    const decodedObject = Decode(signedToken);
+    expect(decodedObject).to.be.an('Object')
+    expect(decodedObject).to.contain.keys(['userId', 'username'])
+    expect(decodedObject.userId).to.be.equal(123)
+    expect(decodedObject.username).to.be.equal('testuser')
   });
 
   it('should validate a token correctly', () => {
@@ -26,6 +41,16 @@ describe('Token Handling Functions', () => {
     expect(isValid).to.be.true;
   });
 
+  it('should validate a token correctly without secret key', () => {
+    const objectValue = { userId: 123, username: 'testuser' };
+
+    const signedToken = Sign(objectValue);
+    expect(signedToken).to.be.a('string');
+
+    const isValid = Validate(signedToken);
+    expect(isValid).to.be.true;
+  });
+
   it('should validate a refresh token correctly', () => {
     const objectValue = { userId: 123, username: 'testuser' };
     const secretKey = 'mySecretKey';
@@ -34,6 +59,16 @@ describe('Token Handling Functions', () => {
     expect(signedToken).to.be.a('string');
 
     const isValid = ValidateRefresh(signedToken, secretKey);
+    expect(isValid).to.be.true;
+  });
+
+  it('should validate a refresh token correctly without secret key', () => {
+    const objectValue = { userId: 123, username: 'testuser' };
+
+    const signedToken = Sign(objectValue);
+    expect(signedToken).to.be.a('string');
+
+    const isValid = ValidateRefresh(signedToken);
     expect(isValid).to.be.true;
   });
 

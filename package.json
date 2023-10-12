@@ -4,7 +4,7 @@
   "description": "NPM package meticulously crafted to simplify JSON Web Token (JWT) operations in JavaScript projects",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha tests/tokenHandler.test.js"
+    "test": "nyc mocha tests/*.js"
   },
   "repository": {
     "type": "git",
