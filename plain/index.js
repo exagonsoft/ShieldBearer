@@ -12,35 +12,13 @@ class SimpleTokenHandler {
   }
 
   decodeToken(token) {
-    if (!this.isValidSBT(token)) {
-      throw new Error("Invalid ShieldBearer Token");
-    }
-
     const _segments = token.split(".");
     const _decodedObject = this.decodeBody(_segments[1]);
 
     return _decodedObject;
   }
 
-  isValidSBT(token) {
-    let _result = false;
-
-    if (token) {
-      const _sections = token.split(".");
-      if (_sections.length == 3) {
-        _result = true;
-      }
-    }
-
-    return _result;
-  }
-
   validateToken(token) {
-
-    if(!this.isValidSBT(token)){
-      throw new Error("Invalid ShieldBearer Token");
-    }
-
     const _segments = token.split(".");
     const _isValid = this.validateBody(_segments[1]);
 
@@ -48,11 +26,6 @@ class SimpleTokenHandler {
   }
 
   validateRefreshToken(token) {
-
-    if(!this.isValidSBT(token)){
-      throw new Error("Invalid ShieldBearer Token");
-    }
-    
     const _segments = token.split(".");
     const _isValid = this.validateRefreshBody(_segments[1]);
 

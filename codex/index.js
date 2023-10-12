@@ -48,6 +48,13 @@ class ComplexTokenHandler {
     return _isValid;
   }
 
+  validateRefreshToken(token) {
+    const _segments = token.split(".");
+    const _isValid = this.validateRefreshBody(_segments[1]);
+
+    return _isValid;
+  }
+
   generateToken(object) {
     const _tokenHeader = this.generateHeader();
     const _tokenBody = this.generateBody(object);
@@ -113,6 +120,24 @@ class ComplexTokenHandler {
       const _stringBody = atob(_decodedStringBody);
       const _objectBody = JSON.parse(_stringBody);
       const _tokenTimeOut = _objectBody.tto;
+      const currentTimestamp = Date.now();
+
+      if (_tokenTimeOut > currentTimestamp) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  validateRefreshBody(stringBody) {
+    try {
+      const _decodedStringBody = this.decrypt(stringBody);
+      const _stringBody = atob(_decodedStringBody);
+      const _objectBody = JSON.parse(_stringBody);
+      const _tokenTimeOut = _objectBody.rtt;
       const currentTimestamp = Date.now();
 
       if (_tokenTimeOut > currentTimestamp) {
