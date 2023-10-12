@@ -6,7 +6,7 @@ class Validation {
 
     if (token) {
       const _sections = token.split(".");
-      if (_sections.length == 3) {
+      if (_sections.length === 3) {
         _result = true;
       }
     }

@@ -103,15 +103,11 @@ class ComplexTokenHandler {
   }
 
   decodeBody(stringBody) {
-    try {
-      const _decodedStringBody = this.decrypt(stringBody);
-      const _stringBody = atob(_decodedStringBody);
-      const _objectBody = JSON.parse(_stringBody);
+    const _decodedStringBody = this.decrypt(stringBody);
+    const _stringBody = atob(_decodedStringBody);
+    const _objectBody = JSON.parse(_stringBody);
 
-      return _objectBody;
-    } catch (error) {
-      throw error;
-    }
+    return _objectBody;
   }
 
   validateBody(stringBody) {

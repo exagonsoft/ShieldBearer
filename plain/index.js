@@ -67,14 +67,10 @@ class SimpleTokenHandler {
   }
 
   decodeBody(stringBody) {
-    try {
-      const _stringBody = atob(stringBody);
-      const _objectBody = JSON.parse(_stringBody);
+    const _stringBody = atob(stringBody);
+    const _objectBody = JSON.parse(_stringBody);
 
-      return _objectBody;
-    } catch (error) {
-      throw error;
-    }
+    return _objectBody;
   }
 
   validateBody(stringBody) {

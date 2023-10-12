@@ -16,11 +16,11 @@ ShieldBearer is a cutting-edge npm package meticulously crafted to simplify JSON
 
 ## Benefits
 
-- **Zero Dependencies:** ShieldBearer doesn't rely on any external libraries or tools, providing a pure and lightweight JWT solution.
-- **Efficient Token Operations:** Sign, decode, and validate JWTs with ease, ensuring secure data transmission and authentication.
-- **Enhanced Security:** Utilize robust encryption techniques to safeguard sensitive data, bolstering the overall security of your applications.
-- **Developer-Friendly API:** ShieldBearer offers an intuitive and developer-friendly interface, allowing for seamless integration and usage.
-- **Transparent Codebase:** Explore a well-documented and transparent codebase, enabling developers to understand and customize the library to fit their needs.
+-  **Zero Dependencies:** ShieldBearer doesn't rely on any external libraries or tools, providing a pure and lightweight JWT solution.
+-  **Efficient Token Operations:** Sign, decode, and validate JWTs with ease, ensuring secure data transmission and authentication.
+-  **Enhanced Security:** Utilize robust encryption techniques to safeguard sensitive data, bolstering the overall security of your applications.
+-  **Developer-Friendly API:** ShieldBearer offers an intuitive and developer-friendly interface, allowing for seamless integration and usage.
+-  **Transparent Codebase:** Explore a well-documented and transparent codebase, enabling developers to understand and customize the library to fit their needs.
 
 ## Installation
 
@@ -34,7 +34,7 @@ npm install shieldbearer
 
 ## Usage
 
-- Require ShieldBearer in your JavaScript file and start harnessing the power of secure JWT operations:
+-  Require ShieldBearer in your JavaScript file and start harnessing the power of secure JWT operations:
 
 ```bash
 const shieldbearer = require('shieldbearer');
@@ -54,7 +54,7 @@ const isValid = shieldbearer.validate(token);
 
 ## Example
 
-- Here's a basic example of signing, decoding, and validating a JWT using ShieldBearer.
+-  Here's a basic example of signing, decoding, and validating a JWT using ShieldBearer.
 
 ```javascript
 const shieldbearer = require("shieldbearer");
@@ -75,4 +75,4 @@ console.log(isValid); // Output: true
 
 ## Contributing
 
-- Contributions are welcome! For bug reports or feature requests, please submit an issue or make a pull request. For more information, check out our contribution guidelines.
+-  Contributions are welcome! For bug reports or feature requests, please submit an issue or make a pull request. For more information, check out our contribution guidelines.

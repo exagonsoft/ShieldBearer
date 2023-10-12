@@ -7,7 +7,7 @@ const _validator = new Validation();
 
 module.exports.Sign = (objectValue, secretKey = null) => {
   //Throw an Error if Source is not an Object//
-  if (!objectValue instanceof Object) {
+  if (!(objectValue instanceof Object)) {
     const _error = new CustomError("Invalid Object Provided", "Invalid Source");
     throw _error;
   }
@@ -27,7 +27,7 @@ module.exports.Sign = (objectValue, secretKey = null) => {
 
 module.exports.Decode = (signedStringToken, secretKey = null) => {
   //Throw an Error if Source is not an Object//
-  if (!signedStringToken instanceof String) {
+  if (!(signedStringToken instanceof String)) {
     const _error = new CustomError("Invalid String Provided", "Invalid Source");
     throw _error;
   }
@@ -51,8 +51,7 @@ module.exports.Decode = (signedStringToken, secretKey = null) => {
 };
 
 module.exports.Validate = (signedStringToken, secretKey = null) => {
-   //Throw an Error if Source is not an Object//
-   if (!signedStringToken instanceof String) {
+   if (!(signedStringToken instanceof String)) {
     const _error = new CustomError("Invalid String Provided", "Invalid Source");
     throw _error;
   }
@@ -77,7 +76,7 @@ module.exports.Validate = (signedStringToken, secretKey = null) => {
 
 module.exports.ValidateRefresh = (signedStringToken, secretKey = null) => {
    //Throw an Error if Source is not an Object//
-   if (!signedStringToken instanceof String) {
+   if (!(signedStringToken instanceof String)) {
     const _error = new CustomError("Invalid String Provided", "Invalid Source");
     throw _error;
   }
