@@ -30,4 +30,6 @@ jobs:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Upload coverage reports to Codacy
+      env:
+        CODACY_PROJECT_TOKEN: ${{secrets.CODACY_PROJECT_TOKEN}}
       run: ./upload_coverage.sh
