@@ -27,6 +27,6 @@ jobs:
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       with:
-        files: '../../.nyc_output/*.json'
+        files: './.nyc_output/*.json'
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
