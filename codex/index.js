@@ -77,7 +77,7 @@ class ComplexTokenHandler {
   generateBody(object) {
     // Calculate timestamps for rtt (now + 12h) and tto (now + 24h)
     const now = new Date();
-    const rtt = new Date(now.getTime() + 12 * 60 * 60 * 1000);
+    const rtt = new Date(now.getTime() + 168 * 60 * 60 * 1000);
     const tto = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 
     const _newObj = {
@@ -103,11 +103,16 @@ class ComplexTokenHandler {
   }
 
   decodeBody(stringBody) {
-    const _decodedStringBody = this.decrypt(stringBody);
-    const _stringBody = atob(_decodedStringBody);
-    const _objectBody = JSON.parse(_stringBody);
+    try {
+      const _decodedStringBody = this.decrypt(stringBody);
+      const _stringBody = atob(_decodedStringBody);
+      const _objectBody = JSON.parse(_stringBody);
 
-    return _objectBody;
+      return _objectBody;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
   }
 
   validateBody(stringBody) {

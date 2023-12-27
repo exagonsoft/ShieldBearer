@@ -1,14 +1,16 @@
 {
   "name": "shieldbearer",
-  "version": "1.1.1",
+  "version": "1.2.4",
   "description": "NPM package meticulously crafted to simplify JSON Web Token (JWT) operations in JavaScript projects",
+  "types": "index.d.ts",
   "main": "index.js",
   "files": [
       "pictures",
       "codex",
       "error",
       "plain",
-      "validation"
+      "validation",
+      "/index.d.ts"
   ],
   "scripts": {
     "test": "nyc mocha tests/*.js && nyc report --reporter=lcov"
