@@ -1,6 +1,6 @@
 {
   "name": "shieldbearer",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "NPM package meticulously crafted to simplify JSON Web Token (JWT) operations in JavaScript projects",
   "types": "index.d.ts",
   "main": "index.js",
@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/exagonsoft/ShieldBearer#readme",
   "devDependencies": {
-    "chai": "^4.3.10",
-    "mocha": "^10.2.0",
-    "nyc": "^15.1.0"
+    "chai": "^=4.4.1",
+    "mocha": "^=10.5.2",
+    "nyc": "^=15.1.0"
   }
 }
